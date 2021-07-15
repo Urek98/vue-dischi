@@ -25,13 +25,12 @@ export default {
   created() {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((result) => {
       this.albumList = result.data.response
-      this.filteredAlbumList = result.data.response
     })
   },
   computed: {
     filteredAlbumList() {
       return this.albumList.filter ((element) => {
-         if (element.genre == this.selectedValue || this.selectedValue == 'All') {
+         if (element.genre == this.selectedValue || this.selectedValue == 'All' || this.selectedValue == '') {
            return true
          } 
       })
