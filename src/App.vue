@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       albumList:[],
-      filteredAlbumList:[]
+      selectedValue : ''
     }
   },
   created() {
@@ -28,13 +28,18 @@ export default {
       this.filteredAlbumList = result.data.response
     })
   },
+  computed: {
+    filteredAlbumList() {
+      return this.albumList.filter ((element) => {
+         if (element.genre == this.selectedValue || this.selectedValue == 'All') {
+           return true
+         } 
+      })
+    }
+  },
   methods: {
     changeAlbum(selected) {
-      this.filteredAlbumList = this.albumList.filter ((element) => {
-        if (element.genre == selected || selected == 'All') {
-          return true
-        } 
-      })
+      this.selectedValue = selected
     }
   }
 }
