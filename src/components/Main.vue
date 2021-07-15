@@ -29,5 +29,7 @@ export default {
         padding: 30px 0;
         flex-wrap: wrap;
         justify-content: center;
+        min-height: 600px;
+        align-items: center;
     }
 </style>

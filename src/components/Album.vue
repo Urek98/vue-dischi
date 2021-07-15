@@ -23,6 +23,7 @@ export default {
 <style scoped lang="scss">
 .album-card {
   width: 150px;
+  height: 300px;
   background-color: rgb(46, 58, 70);
   text-align: center;
   margin: 20px 40px;

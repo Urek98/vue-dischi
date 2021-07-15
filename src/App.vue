@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <Header />
-    <Main :albumList="albumList"/>
+    <Header @changeValue="changeAlbum" />
+    <Main :albumList="filteredAlbumList"/>
   </div>
 </template>
 
@@ -18,13 +18,24 @@ export default {
   },
   data() {
     return {
-      albumList:[]
+      albumList:[],
+      filteredAlbumList:[]
     }
   },
   created() {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music').then((result) => {
       this.albumList = result.data.response
+      this.filteredAlbumList = result.data.response
     })
+  },
+  methods: {
+    changeAlbum(selected) {
+      this.filteredAlbumList = this.albumList.filter ((element) => {
+        if (element.genre == selected || selected == 'All') {
+          return true
+        } 
+      })
+    }
   }
 }
 </script>
